@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KidzGPT — My Courses</title>
+  <meta name="description" content="Browse, continue, and manage your enrolled courses on KidzGPT. Track progress across subjects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard-style.css" />
+  <link rel="stylesheet" href="courses-style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="courses-body">
+
+  <!-- ======== DASHBOARD CONTAINER ======== -->
+  <div class="db-container sidebar-collapsed right-collapsed">
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ======== LEFT SIDEBAR ======== -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Mobile Close Button -->
+      <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Menu">×</button>
+
+      <!-- Logo -->
+      <div class="sidebar-logo">
+        <a href="index.html">
+          <img src="Images&Assests/logo.png" alt="KidzGPT Logo" class="logo-img" />
+        </a>
+      </div>
+
+      <!-- Menu Items -->
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon"><i data-lucide="layout-dashboard"></i></span>
+          <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item active">
+          <span class="nav-icon"><i data-lucide="book-open"></i></span>
+          <span>My Courses</span>
+        </a>
+        <a href="games.html" class="nav-item">
+          <span class="nav-icon"><i data-lucide="gamepad-2"></i></span>
+          <span>Games</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="bot"></i></span>
+          <span>AI Tutor</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="trophy"></i></span>
+          <span>Quizzes</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="clipboard-list"></i></span>
+          <span>Assignments</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="trending-up"></i></span>
+          <span>Progress</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="award"></i></span>
+          <span>Achievements</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="user-circle"></i></span>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="settings"></i></span>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="help-circle"></i></span>
+          <span>Help Center</span>
+        </a>
+      </nav>
+
+      <!-- Premium Banner -->
+      <div class="premium-card">
+        <div class="premium-badge"><i data-lucide="crown"></i></div>
+        <h3>Upgrade to Premium</h3>
+        <p>Unlock all courses, AI tutor & premium games.</p>
+        <button class="btn-upgrade open-upgrade-modal">Upgrade Now ➔</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <span class="theme-label"><i data-lucide="sun" style="width:16px;height:16px;vertical-align:-2px;margin-right:4px;"></i> Light Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </aside>
+
+    <!-- ======== MAIN MAIN CONTENT ======== -->
+    <main class="main-content">
+
+      <!-- ======== TOP HEADER BAR ======== -->
+      <header class="cp-header">
+        <div class="cp-header-left">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Toggle Menu">
+            <i data-lucide="panel-left"></i>
+          </button>
+          <div class="cp-greeting">
+            <h1>Hello, Kartik!</h1>
+            <p>Let's continue your learning journey</p>
+          </div>
+        </div>
+
+        <div class="cp-header-center">
+          <div class="cp-search-wrapper">
+            <span class="cp-search-icon"><i data-lucide="search"></i></span>
+            <input type="text" id="course-search" placeholder="Search for courses, topics or skills..." />
+          </div>
+        </div>
+
+        <div class="cp-header-right">
+          <button class="cp-hdr-btn" id="cp-bell-btn" aria-label="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="cp-badge">3</span>
+          </button>
+          <div class="cp-coins">
+            <i data-lucide="star" style="width:16px;height:16px;fill:#FFB300;color:#FFB300;"></i>
+            <span>1,250</span>
+          </div>
+          <a href="dashboard.html" class="cp-avatar-link">
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Kartik" alt="Kartik Avatar" class="cp-avatar" />
+            <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Content -->
+      <div class="main-scrollable">
+
+        <!-- ======== PAGE TITLE ROW ======== -->
+        <div class="cp-title-row">
+      <div>
+        <h2 class="cp-page-title">My Courses</h2>
+        <p class="cp-page-subtitle">Your learning, your way</p>
+      </div>
+      <div class="cp-title-actions">
+        <button class="cp-filter-btn" id="filter-btn">
+          <i data-lucide="sliders-horizontal"></i>
+          Filters
+        </button>
+        <div class="cp-sort-wrapper">
+          <label>Sort by:</label>
+          <select id="sort-select">
+            <option value="recent">Recent</option>
+            <option value="name">Name</option>
+            <option value="progress">Progress</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== STATS CARDS ROW ======== -->
+    <section class="cp-stats-row">
+      <div class="cp-stat-card">
+        <div class="cp-stat-icon stat-enrolled"><i data-lucide="book-open"></i></div>
+        <div class="cp-stat-info">
+          <span class="cp-stat-number">12</span>
+          <span class="cp-stat-label">Enrolled Courses</span>
+        </div>
+      </div>
+      <div class="cp-stat-card">
+        <div class="cp-stat-icon stat-progress"><i data-lucide="play-circle"></i></div>
+        <div class="cp-stat-info">
+          <span class="cp-stat-number">8</span>
+          <span class="cp-stat-label">Courses in Progress</span>
+        </div>
+      </div>
+      <div class="cp-stat-card">
+        <div class="cp-stat-icon stat-completed"><i data-lucide="check-circle-2"></i></div>
+        <div class="cp-stat-info">
+          <span class="cp-stat-number">4</span>
+          <span class="cp-stat-label">Completed Courses</span>
+        </div>
+      </div>
+      <div class="cp-stat-card">
+        <div class="cp-stat-icon stat-hours"><i data-lucide="clock"></i></div>
+        <div class="cp-stat-info">
+          <span class="cp-stat-number">24.5</span>
+          <span class="cp-stat-label">Total Hours Learned</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TABS ======== -->
+    <nav class="cp-tabs" id="course-tabs">
+      <button class="cp-tab active" data-tab="all">All Courses</button>
+      <button class="cp-tab" data-tab="progress">In Progress</button>
+      <button class="cp-tab" data-tab="completed">Completed</button>
+      <button class="cp-tab" data-tab="saved">Saved</button>
+    </nav>
+
+    <!-- ======== COURSE LIST ======== -->
+    <section class="cp-course-list" id="course-list">
+
+      <!-- Course 1: Fractions & Decimals -->
+      <div class="cp-course-card" data-status="progress" data-subject="math">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#7C4DFF,#5B2DD0);">
+          <i data-lucide="calculator" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-math">Math</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Fractions & Decimals</h3>
+          <p>Learn about fractions, decimals, and how they are used in real life.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:72%;"></div></div>
+            <span class="cp-progress-pct">72% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 2.5 hrs left</span>
+        </div>
+      </div>
+
+      <!-- Course 2: The Plant Kingdom -->
+      <div class="cp-course-card" data-status="progress" data-subject="science">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#43A047,#2E7D32);">
+          <i data-lucide="flask-conical" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-science">Science</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>The Plant Kingdom</h3>
+          <p>Explore the amazing world of plants and how they grow.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:68%;"></div></div>
+            <span class="cp-progress-pct">68% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 1.8 hrs left</span>
+        </div>
+      </div>
+
+      <!-- Course 3: Grammar Basics -->
+      <div class="cp-course-card" data-status="progress" data-subject="english">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#FF7043,#E64A19);">
+          <i data-lucide="languages" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-english">English</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Grammar Basics</h3>
+          <p>Improve your grammar with fun lessons and examples.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:45%;"></div></div>
+            <span class="cp-progress-pct">45% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 1.2 hrs left</span>
+        </div>
+      </div>
+
+      <!-- Course 4: Ancient India -->
+      <div class="cp-course-card" data-status="progress" data-subject="history">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#FF8F00,#E65100);">
+          <i data-lucide="landmark" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-history">History</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Ancient India</h3>
+          <p>Discover the rich history and culture of ancient India.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:30%;"></div></div>
+            <span class="cp-progress-pct">30% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 1.5 hrs left</span>
+        </div>
+      </div>
+
+      <!-- Course 5: Python for Beginners -->
+      <div class="cp-course-card" data-status="progress" data-subject="coding">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#1E88E5,#0D47A1);">
+          <i data-lucide="code-2" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-coding">Coding</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Python for Beginners</h3>
+          <p>Start your coding journey with Python programming.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:60%;"></div></div>
+            <span class="cp-progress-pct">60% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 3.2 hrs left</span>
+        </div>
+      </div>
+
+      <!-- Course 6: Our Earth -->
+      <div class="cp-course-card" data-status="progress" data-subject="geography">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#26A69A,#00695C);">
+          <i data-lucide="globe-2" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-geography">Geography</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Our Earth</h3>
+          <p>Learn about continents, oceans, and our beautiful planet.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:40%;"></div></div>
+            <span class="cp-progress-pct">40% Complete</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue">Continue</button>
+          <span class="cp-time-left"><i data-lucide="clock" style="width:13px;height:13px;"></i> 1.0 hr left</span>
+        </div>
+      </div>
+
+      <!-- Course 7: Algebra Fundamentals (completed) -->
+      <div class="cp-course-card" data-status="completed" data-subject="math">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#9575CD,#5E35B1);">
+          <i data-lucide="sigma" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-math">Math</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Algebra Fundamentals</h3>
+          <p>Master the basics of algebra with interactive exercises.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill completed-fill" style="width:100%;"></div></div>
+            <span class="cp-progress-pct cp-completed-text">Completed!</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue cp-btn-review">Review</button>
+          <span class="cp-time-left"><i data-lucide="check-circle-2" style="width:13px;height:13px;color:#43A047;"></i> Finished</span>
+        </div>
+      </div>
+
+      <!-- Course 8: Solar System (saved) -->
+      <div class="cp-course-card" data-status="saved" data-subject="science">
+        <div class="cp-course-thumb" style="background: linear-gradient(135deg,#5C6BC0,#283593);">
+          <i data-lucide="orbit" class="cp-thumb-icon"></i>
+        </div>
+        <div class="cp-course-body">
+          <div class="cp-course-meta-row">
+            <span class="cp-subject-tag tag-science">Science</span>
+            <button class="cp-more-btn"><i data-lucide="more-vertical"></i></button>
+          </div>
+          <h3>Solar System</h3>
+          <p>Discover planets, stars, and the mysteries of space.</p>
+          <div class="cp-progress-row">
+            <div class="cp-progress-track"><div class="cp-progress-fill" style="width:0%;"></div></div>
+            <span class="cp-progress-pct">Not started</span>
+          </div>
+        </div>
+        <div class="cp-course-action">
+          <button class="cp-btn-continue cp-btn-start">Start</button>
+          <span class="cp-time-left"><i data-lucide="bookmark" style="width:13px;height:13px;color:#7C4DFF;"></i> Saved</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======== RECOMMENDED SECTION ======== -->
+    <section class="cp-recommended">
+      <div class="cp-rec-header">
+        <h2>Recommended for You</h2>
+        <a href="#" class="cp-view-all">View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
+      </div>
+
+      <div class="cp-rec-row">
+        <!-- Rec 1 -->
+        <div class="cp-rec-card">
+          <div class="cp-rec-thumb" style="background: linear-gradient(135deg,#5C6BC0,#283593);">
+            <i data-lucide="orbit" class="cp-thumb-icon-sm"></i>
+            <button class="cp-rec-play"><i data-lucide="play" style="width:16px;height:16px;fill:white;"></i></button>
+          </div>
+          <span class="cp-subject-tag tag-science">Science</span>
+          <h4>Solar System</h4>
+          <p>Class 5 • 6 Lessons</p>
+          <div class="cp-rec-bottom">
+            <div class="cp-progress-track sm"><div class="cp-progress-fill" style="width:55%;"></div></div>
+            <span>55%</span>
+            <button class="cp-bookmark-btn"><i data-lucide="bookmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Rec 2 -->
+        <div class="cp-rec-card">
+          <div class="cp-rec-thumb" style="background: linear-gradient(135deg,#FF7043,#E64A19);">
+            <i data-lucide="message-circle" class="cp-thumb-icon-sm"></i>
+            <button class="cp-rec-play"><i data-lucide="play" style="width:16px;height:16px;fill:white;"></i></button>
+          </div>
+          <span class="cp-subject-tag tag-english">English</span>
+          <h4>Spoken English</h4>
+          <p>Class 4 • 8 Lessons</p>
+          <div class="cp-rec-bottom">
+            <div class="cp-progress-track sm"><div class="cp-progress-fill" style="width:65%;"></div></div>
+            <span>65%</span>
+            <button class="cp-bookmark-btn"><i data-lucide="bookmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Rec 3 -->
+        <div class="cp-rec-card">
+          <div class="cp-rec-thumb" style="background: linear-gradient(135deg,#7C4DFF,#5B2DD0);">
+            <i data-lucide="box" class="cp-thumb-icon-sm"></i>
+            <button class="cp-rec-play"><i data-lucide="play" style="width:16px;height:16px;fill:white;"></i></button>
+          </div>
+          <span class="cp-subject-tag tag-math">Math</span>
+          <h4>Geometry Basics</h4>
+          <p>Class 6 • 9 Lessons</p>
+          <div class="cp-rec-bottom">
+            <div class="cp-progress-track sm"><div class="cp-progress-fill" style="width:50%;"></div></div>
+            <span>50%</span>
+            <button class="cp-bookmark-btn"><i data-lucide="bookmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Rec 4 -->
+        <div class="cp-rec-card">
+          <div class="cp-rec-thumb" style="background: linear-gradient(135deg,#FF8F00,#E65100);">
+            <i data-lucide="castle" class="cp-thumb-icon-sm"></i>
+            <button class="cp-rec-play"><i data-lucide="play" style="width:16px;height:16px;fill:white;"></i></button>
+          </div>
+          <span class="cp-subject-tag tag-history">History</span>
+          <h4>Mughal Empire</h4>
+          <p>Class 7 • 7 Lessons</p>
+          <div class="cp-rec-bottom">
+            <div class="cp-progress-track sm"><div class="cp-progress-fill" style="width:35%;"></div></div>
+            <span>35%</span>
+            <button class="cp-bookmark-btn"><i data-lucide="bookmark"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== AI TUTOR BANNER ======== -->
+    <section class="cp-ai-banner">
+      <div class="cp-ai-left">
+        <div class="cp-ai-avatar">
+          <div class="mini-cylinder cyl-blue">
+            <div class="mini-eyes"><div class="mini-pupil"></div><div class="mini-pupil"></div></div>
+            <div class="mini-mouth"></div>
+          </div>
+        </div>
+        <div>
+          <h3>Need help with a course?</h3>
+          <p>Ask our AI Tutor for doubts, explanations and more!</p>
+        </div>
+      </div>
+      <div class="cp-ai-right">
+        <i data-lucide="help-circle" style="width:22px;height:22px;color:#7C4DFF;"></i>
+        <i data-lucide="message-square" style="width:22px;height:22px;color:#7C4DFF;"></i>
+        <button class="cp-btn-ai">Ask AI Tutor <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+      </div>
+    </section>
+
+      </div><!-- /main-scrollable -->
+    </main><!-- /main-content -->
+  </div><!-- /db-container -->
+
+  <script src="courses-script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

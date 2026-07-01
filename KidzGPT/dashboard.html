@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KidzGPT — Student Dashboard 🚀</title>
+  <meta name="description" content="View your learning progress, play gamified AI quizzes, select subject paths, and study with your AI buddy on KidzGPT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard-style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="dashboard-body">
+
+  <!-- ======== DASHBOARD CONTAINER ======== -->
+  <div class="db-container sidebar-collapsed right-collapsed">
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ======== LEFT SIDEBAR ======== -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Mobile Close Button -->
+      <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Menu">×</button>
+
+      <!-- Logo -->
+      <div class="sidebar-logo">
+        <a href="index.html">
+          <img src="Images&Assests/logo.png" alt="KidzGPT Logo" class="logo-img" />
+        </a>
+      </div>
+
+      <!-- Menu Items -->
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <span class="nav-icon"><i data-lucide="layout-dashboard"></i></span>
+          <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="nav-item">
+          <span class="nav-icon"><i data-lucide="book-open"></i></span>
+          <span>My Courses</span>
+        </a>
+        <a href="games.html" class="nav-item">
+          <span class="nav-icon"><i data-lucide="gamepad-2"></i></span>
+          <span>Games</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="bot"></i></span>
+          <span>AI Tutor</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="trophy"></i></span>
+          <span>Quizzes</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="clipboard-list"></i></span>
+          <span>Assignments</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="trending-up"></i></span>
+          <span>Progress</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="award"></i></span>
+          <span>Achievements</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="user-circle"></i></span>
+          <span>Profile</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="settings"></i></span>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i data-lucide="help-circle"></i></span>
+          <span>Help Center</span>
+        </a>
+      </nav>
+
+      <!-- Premium Banner -->
+      <div class="premium-card">
+        <div class="premium-badge"><i data-lucide="crown"></i></div>
+        <h3>Upgrade to Premium</h3>
+        <p>Unlock all courses, AI tutor & premium games.</p>
+        <button class="btn-upgrade open-upgrade-modal">Upgrade Now ➔</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <span class="theme-label"><i data-lucide="sun" style="width:16px;height:16px;vertical-align:-2px;margin-right:4px;"></i> Light Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </aside>
+
+    <!-- ======== MAIN MAIN CONTENT ======== -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="db-header">
+        <div class="header-left">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Toggle Menu"><i data-lucide="panel-left"></i></button>
+          <div class="header-greeting">
+            <h1>Hello, Kartik! 👋</h1>
+            <p>Let's make today amazing!</p>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <div class="search-bar-wrapper">
+            <span class="search-icon"><i data-lucide="search"></i></span>
+            <input type="text" id="db-search" placeholder="Search for courses, topics or fun..." />
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Right Panel Toggle -->
+          <button class="header-btn" id="stats-toggle-btn" aria-label="Toggle Progress Panel" title="Progress Panel">
+            <i data-lucide="bar-chart-3"></i>
+          </button>
+          <!-- Notification Bell -->
+          <div class="header-action-wrapper" id="bell-wrapper">
+            <button class="header-btn" id="bell-btn" aria-label="Notifications">
+              <i data-lucide="bell"></i>
+              <span class="badge-count">3</span>
+            </button>
+            <!-- Dropdown Pane -->
+            <div class="db-dropdown hidden" id="bell-dropdown">
+              <h4>Notifications</h4>
+              <div class="drop-item">
+                <p><strong>Companion Unlocked!</strong> You unlocked Purple cylinder companion. 🎉</p>
+                <span>5m ago</span>
+              </div>
+              <div class="drop-item">
+                <p><strong>Quiz Complete!</strong> You scored 100% in Fractions Quiz! 🏆</p>
+                <span>2h ago</span>
+              </div>
+              <div class="drop-item">
+                <p><strong>Daily Streak!</strong> Consistent Learner streak at 5 days. 🔥</p>
+                <span>1d ago</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coins Balance -->
+          <div class="coins-balance" id="coins-container">
+            <span class="coins-icon"><i data-lucide="star" style="width:16px;height:16px;fill:#FFB300;color:#FFB300;"></i></span>
+            <span class="coins-val" id="coins-value">1,250</span>
+          </div>
+
+          <!-- Profile Dropper -->
+          <div class="header-action-wrapper" id="profile-wrapper">
+            <button class="avatar-btn" id="profile-btn" aria-label="User profile">
+              <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Kartik" alt="Kartik Avatar" class="profile-avatar-img" />
+              <span class="dropdown-chevron">▼</span>
+            </button>
+            <!-- Dropdown Menu -->
+            <div class="db-dropdown hidden" id="profile-dropdown">
+              <a href="#">Edit Profile</a>
+              <a href="#">My Badges</a>
+              <a href="#">Subscription</a>
+              <div class="drop-divider"></div>
+              <a href="index.html" class="logout-link">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Center Scrolling Content -->
+      <div class="main-scrollable">
+
+        <!-- Hero Carousel Banner -->
+        <section class="db-hero-card">
+          <div class="hero-card-left">
+            <h2>Keep Learning,<br>Keep Growing! 🚀</h2>
+            <p>Interactive lessons, games and AI tutor — all in one place!</p>
+            <button class="btn-explore">Explore Now ➔</button>
+          </div>
+          <div class="hero-card-right">
+            <!-- Shaded Cylinder Avatars -->
+            <div class="hero-buddies">
+              <!-- Blue Mini Cylinder -->
+              <div class="mini-cylinder cyl-blue">
+                <div class="mini-eyes"><div class="mini-pupil"></div><div class="mini-pupil"></div></div>
+                <div class="mini-mouth"></div>
+              </div>
+              <!-- Yellow Mini Cylinder -->
+              <div class="mini-cylinder cyl-yellow">
+                <div class="mini-eyes"><div class="mini-pupil"></div><div class="mini-pupil"></div></div>
+                <div class="mini-mouth"></div>
+              </div>
+              <!-- Purple Mini Cylinder -->
+              <div class="mini-cylinder cyl-purple">
+                <div class="mini-eyes"><div class="mini-pupil"></div><div class="mini-pupil"></div></div>
+                <div class="mini-mouth"></div>
+              </div>
+              <!-- Red Mini Cylinder -->
+              <div class="mini-cylinder cyl-red">
+                <div class="mini-eyes"><div class="mini-pupil"></div><div class="mini-pupil"></div></div>
+                <div class="mini-mouth"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel Dots -->
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </section>
+
+        <!-- Quick Navigation Icons -->
+        <section class="quick-nav-row">
+          <a href="#" class="quick-nav-item item-courses">
+            <div class="icon-circle"><i data-lucide="book-open"></i></div>
+            <span>My Courses</span>
+          </a>
+          <a href="#" class="quick-nav-item item-games">
+            <div class="icon-circle"><i data-lucide="gamepad-2"></i></div>
+            <span>Games</span>
+          </a>
+          <a href="#" class="quick-nav-item item-tutor">
+            <div class="icon-circle"><i data-lucide="bot"></i></div>
+            <span>AI Tutor</span>
+          </a>
+          <a href="#" class="quick-nav-item item-quizzes">
+            <div class="icon-circle"><i data-lucide="trophy"></i></div>
+            <span>Quizzes</span>
+          </a>
+          <a href="#" class="quick-nav-item item-assignments">
+            <div class="icon-circle"><i data-lucide="clipboard-list"></i></div>
+            <span>Assignments</span>
+          </a>
+          <a href="#" class="quick-nav-item item-progress">
+            <div class="icon-circle"><i data-lucide="trending-up"></i></div>
+            <span>Progress</span>
+          </a>
+        </section>
+
+        <!-- Continue Learning Row -->
+        <section class="dashboard-section">
+          <div class="section-header-row">
+            <h2>Continue Learning</h2>
+            <a href="#" class="view-all-link">View All ➔</a>
+          </div>
+
+          <div class="continue-learning-row">
+            <!-- Card 1 -->
+            <div class="learning-card" data-title="the cell structure">
+              <div class="card-video-thumb" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=400');">
+                <button class="video-play-btn" aria-label="Play Lesson">▶</button>
+              </div>
+              <div class="card-info">
+                <span class="subject-tag tag-science">Science</span>
+                <h3>The Cell Structure</h3>
+                <p>Class 8 • Chapter 5</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 68%;"></div>
+                </div>
+                <div class="progress-percent">68%</div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="learning-card" data-title="three questions">
+              <div class="card-video-thumb" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=400');">
+                <button class="video-play-btn" aria-label="Play Lesson">▶</button>
+              </div>
+              <div class="card-info">
+                <span class="subject-tag tag-english">English</span>
+                <h3>Three Questions</h3>
+                <p>Class 7 • Chapter 2</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 45%;"></div>
+                </div>
+                <div class="progress-percent">45%</div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="learning-card" data-title="fractions & decimals">
+              <div class="card-video-thumb" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400');">
+                <button class="video-play-btn" aria-label="Play Lesson">▶</button>
+              </div>
+              <div class="card-info">
+                <span class="subject-tag tag-maths">Maths</span>
+                <h3>Fractions & Decimals</h3>
+                <p>Class 5 • Chapter 3</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 72%;"></div>
+                </div>
+                <div class="progress-percent">72%</div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="learning-card" data-title="the french revolution">
+              <div class="card-video-thumb" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=400');">
+                <button class="video-play-btn" aria-label="Play Lesson">▶</button>
+              </div>
+              <div class="card-info">
+                <span class="subject-tag tag-history">History</span>
+                <h3>The French Revolution</h3>
+                <p>Class 9 • Chapter 1</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 30%;"></div>
+                </div>
+                <div class="progress-percent">30%</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- My Subjects Section -->
+        <section class="dashboard-section">
+          <div class="section-header-row">
+            <h2>My Subjects</h2>
+            <a href="#" class="view-all-link">Manage ➔</a>
+          </div>
+
+          <div class="subjects-row">
+            <!-- Math -->
+            <div class="subject-card card-math" data-subject="mathematics">
+              <div class="subject-card-icon"><i data-lucide="calculator"></i></div>
+              <h3>Mathematics</h3>
+              <p>8 Chapters</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 72%;"></div>
+              </div>
+              <div class="progress-percent-row">
+                <span>72%</span>
+              </div>
+            </div>
+
+            <!-- Science -->
+            <div class="subject-card card-science" data-subject="science">
+              <div class="subject-card-icon"><i data-lucide="flask-conical"></i></div>
+              <h3>Science</h3>
+              <p>10 Chapters</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 68%;"></div>
+              </div>
+              <div class="progress-percent-row">
+                <span>68%</span>
+              </div>
+            </div>
+
+            <!-- English -->
+            <div class="subject-card card-english" data-subject="english">
+              <div class="subject-card-icon"><i data-lucide="languages"></i></div>
+              <h3>English</h3>
+              <p>12 Chapters</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 45%;"></div>
+              </div>
+              <div class="progress-percent-row">
+                <span>45%</span>
+              </div>
+            </div>
+
+            <!-- Social Science -->
+            <div class="subject-card card-social" data-subject="social science">
+              <div class="subject-card-icon"><i data-lucide="globe-2"></i></div>
+              <h3>Social Science</h3>
+              <p>9 Chapters</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+              <div class="progress-percent-row">
+                <span>50%</span>
+              </div>
+            </div>
+
+            <!-- Hindi -->
+            <div class="subject-card card-hindi" data-subject="hindi">
+              <div class="subject-card-icon"><i data-lucide="type"></i></div>
+              <h3>Hindi</h3>
+              <p>6 Chapters</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 60%;"></div>
+              </div>
+              <div class="progress-percent-row">
+                <span>60%</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ======== RIGHT WIDGETS SIDEBAR ======== -->
+    <aside class="right-widgets">
+      <!-- Progress Overview Widget -->
+      <section class="widget-card card-progress-overview">
+        <div class="widget-header-row">
+          <h3>Your Progress Overview</h3>
+          <select class="widget-select" aria-label="Select timeframe">
+            <option>This Week</option>
+            <option>This Month</option>
+          </select>
+        </div>
+
+        <!-- Weekly Activity Line Chart SVG -->
+        <div class="chart-wrapper">
+          <svg class="activity-chart" viewBox="0 0 320 120" fill="none">
+            <!-- Chart Grid Lines -->
+            <line x1="0" y1="30" x2="320" y2="30" stroke="var(--gray-200)" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="0" y1="60" x2="320" y2="60" stroke="var(--gray-200)" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="0" y1="90" x2="320" y2="90" stroke="var(--gray-200)" stroke-width="1" stroke-dasharray="4 4" />
+            
+            <!-- Fill Gradient Area -->
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--purple-500)" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="var(--purple-500)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M 0 90 Q 40 40 80 50 T 160 40 T 240 25 T 320 30 L 320 110 L 0 110 Z" fill="url(#chartFill)" />
+
+            <!-- Curve Line -->
+            <path d="M 0 90 Q 40 40 80 50 T 160 40 T 240 25 T 320 30" stroke="var(--purple-500)" stroke-width="4" stroke-linecap="round" />
+            
+            <!-- Interactive Highlight Dot -->
+            <circle cx="280" cy="27" r="6" fill="var(--purple-500)" stroke="white" stroke-width="2" />
+            <rect x="250" y="2" width="60" height="18" rx="6" fill="var(--purple-500)" />
+            <text x="280" y="14" fill="white" font-size="8" text-anchor="middle" font-weight="700">Great job!</text>
+          </svg>
+          <!-- Chart Labels -->
+          <div class="chart-labels">
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+            <span>Sun</span>
+          </div>
+        </div>
+
+        <!-- Weekly Progress Stats Grid -->
+        <div class="db-stats-grid">
+          <div class="stat-box">
+            <span class="stat-num">12</span>
+            <span class="stat-lbl">Lessons Completed</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">8.5</span>
+            <span class="stat-lbl">Hours Learned</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">85%</span>
+            <span class="stat-lbl">Average Score</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">1250</span>
+            <span class="stat-lbl">Coins Earned</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Achievements Widget -->
+      <section class="widget-card card-achievements">
+        <div class="widget-header-row">
+          <h3>Recent Achievements</h3>
+          <a href="#" class="view-all-link">View All ➔</a>
+        </div>
+
+        <div class="achievements-list">
+          <!-- Item 1 -->
+          <div class="achievement-item">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-info">
+              <h4>Quiz Master</h4>
+              <p>Score 100% in 5 quizzes</p>
+            </div>
+            <div class="achievement-reward">+100 ⭐</div>
+          </div>
+          <!-- Item 2 -->
+          <div class="achievement-item">
+            <div class="achievement-icon">🔬</div>
+            <div class="achievement-info">
+              <h4>Science Explorer</h4>
+              <p>Complete 3 Science experiments</p>
+            </div>
+            <div class="achievement-reward">+150 ⭐</div>
+          </div>
+          <!-- Item 3 -->
+          <div class="achievement-item">
+            <div class="achievement-icon">🔥</div>
+            <div class="achievement-info">
+              <h4>Consistent Learner</h4>
+              <p>Learn for 7 days in a row</p>
+            </div>
+            <div class="achievement-reward">+200 ⭐</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Top Learners Leaderboard -->
+      <section class="widget-card card-leaderboard">
+        <div class="widget-header-row">
+          <h3>Top Learners</h3>
+          <a href="#" class="view-all-link">View All ➔</a>
+        </div>
+
+        <div class="leaderboard-list">
+          <div class="leaderboard-row">
+            <div class="leader-rank rank-1">1</div>
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aarav" alt="Aarav Avatar" class="leader-avatar" />
+            <div class="leader-details">
+              <strong>Aarav Sharma</strong>
+            </div>
+            <div class="leader-score">⭐ 2,450</div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="leader-rank rank-2">2</div>
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Diya" alt="Diya Avatar" class="leader-avatar" />
+            <div class="leader-details">
+              <strong>Diya Verma</strong>
+            </div>
+            <div class="leader-score">⭐ 2,150</div>
+          </div>
+          <div class="leaderboard-row current-user">
+            <div class="leader-rank rank-3">3</div>
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Kartik" alt="Kartik Avatar" class="leader-avatar" />
+            <div class="leader-details">
+              <strong>Kartik (You)</strong>
+            </div>
+            <div class="leader-score">⭐ 1,250</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Free Trial Treasure Chest CTA Card -->
+      <section class="trial-chest-card">
+        <div class="chest-card-content">
+          <span class="chest-tag">1 MONTH FREE TRIAL</span>
+          <h3>Unlock Premium Learning!</h3>
+          <p>Get unlimited access to all courses, AI tutor & premium games.</p>
+          <button class="btn-upgrade open-upgrade-modal">Upgrade Now ➔</button>
+        </div>
+        <div class="chest-graphic">👑</div>
+      </section>
+    </aside>
+
+  </div>
+
+  <!-- ======== PREMIUM UPGRADE POPUP MODAL ======== -->
+  <div class="modal-overlay hidden" id="upgradeModal">
+    <div class="modal-card">
+      <button class="close-modal-btn" id="closeModalBtn" aria-label="Close Modal">×</button>
+      <div class="modal-header">
+        <span class="modal-crown">👑</span>
+        <h2>Unlock KidzGPT Premium!</h2>
+        <p>Choose your plan and kickstart your adventure</p>
+      </div>
+
+      <div class="pricing-plans-row">
+        <!-- Card 1 -->
+        <div class="price-plan-card">
+          <h4>Monthly Plan</h4>
+          <div class="plan-price">₹499<span>/mo</span></div>
+          <p>Billed monthly, cancel anytime</p>
+          <ul class="plan-bullets">
+            <li>Interactive 3D Classes</li>
+            <li>AI Tutor Assistance</li>
+            <li>Custom quizzes & badges</li>
+          </ul>
+          <button class="btn-select-plan" data-plan="Monthly">Select Plan</button>
+        </div>
+        <!-- Card 2 -->
+        <div class="price-plan-card active-plan">
+          <div class="best-value-badge">BEST VALUE</div>
+          <h4>Yearly Plan</h4>
+          <div class="plan-price">₹299<span>/mo</span></div>
+          <p>Save 40%! Billed yearly (₹3588)</p>
+          <ul class="plan-bullets">
+            <li>Interactive 3D Classes</li>
+            <li>AI Tutor 24/7 Support</li>
+            <li>Custom quizzes & badges</li>
+            <li>Premium companion avatars</li>
+          </ul>
+          <button class="btn-select-plan btn-primary" data-plan="Yearly">Select Plan</button>
+        </div>
+      </div>
+
+      <div class="modal-success-state hidden" id="modalSuccessState">
+        <div class="success-icon">🎉</div>
+        <h2>Congratulations, Kartik!</h2>
+        <p>Your premium access is now unlocked. Go explore the learning worlds!</p>
+        <button class="btn-submit" id="btnSuccessClose">Go to Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard-script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

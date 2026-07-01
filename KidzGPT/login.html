@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KidzGPT — Continue Your Learning Adventure 🚀</title>
+  <meta name="description" content="Log in or sign up to KidzGPT to access your personalized AI tutor, 3D lessons, and gamified challenges." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login-style.css" />
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <!-- Left Pane: Room and Interactive 3D Cylinders -->
+    <div class="login-left-pane">
+
+
+      <!-- Speech Bubble -->
+      <div class="speech-bubble" id="speechBubble">
+        Hey there! 👋<br>Move your mouse around, I follow you!
+      </div>
+
+      <!-- Interactive 3D Cylinders Group -->
+      <div class="cylinders-group">
+        <!-- Blue Cylinder -->
+        <div class="cylinder cyl-blue" id="cyl-blue">
+          <div class="eyeballs">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+          </div>
+          <div class="mouth mouth-smile"></div>
+        </div>
+
+        <!-- Yellow Cylinder -->
+        <div class="cylinder cyl-yellow" id="cyl-yellow">
+          <div class="eyeballs">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+          </div>
+          <div class="mouth mouth-smile"></div>
+        </div>
+
+        <!-- Purple Cylinder -->
+        <div class="cylinder cyl-purple" id="cyl-purple">
+          <div class="eyeballs">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+          </div>
+          <div class="mouth mouth-smile"></div>
+        </div>
+
+        <!-- Red Cylinder -->
+        <div class="cylinder cyl-red" id="cyl-red">
+          <div class="eyeballs">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+          </div>
+          <div class="mouth mouth-smile"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Pane: Form Card -->
+    <div class="login-right-pane">
+      <div class="form-card">
+        <!-- Logo -->
+        <div class="form-logo">
+          <a href="index.html">
+            <img src="Images&Assests/logo.png" alt="KidzGPT Logo" class="logo-img" />
+          </a>
+        </div>
+
+        <!-- AUTH STEP -->
+        <div id="auth-step">
+          <!-- Title & Subtitle -->
+          <div class="form-header">
+            <h1 id="formTitle">Welcome back! 👋</h1>
+            <p id="formSubtitle">Continue your learning adventure</p>
+          </div>
+
+          <!-- Tabs Switcher -->
+          <div class="form-tabs">
+            <button class="tab-btn active" id="tab-login">Log In</button>
+            <button class="tab-btn" id="tab-signup">Sign Up</button>
+          </div>
+
+          <!-- Form Elements -->
+          <form class="auth-form" id="authForm" onsubmit="event.preventDefault();">
+            <!-- Name Field (Hidden for Login, Shown for Signup) -->
+            <div class="input-group hidden" id="group-name">
+              <div class="input-wrapper">
+                <span class="input-icon">👤</span>
+                <input type="text" id="input-name" placeholder="Full name" />
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="input-group" id="group-email">
+              <div class="input-wrapper">
+                <span class="input-icon">✉️</span>
+                <input type="email" id="input-email" placeholder="Email address" required />
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-group" id="group-password">
+              <div class="input-wrapper">
+                <span class="input-icon">🔒</span>
+                <input type="password" id="input-password" placeholder="Password" required />
+                <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">👁️</button>
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password Row -->
+            <div class="form-options" id="formOptionsRow">
+              <label class="remember-me">
+                <input type="checkbox" id="remember-me" checked />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-pass-link">Forgot password?</a>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit" id="btnSubmit">
+              <span id="submitText">Log In</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="form-divider">
+            <span>or continue with</span>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="social-login-row">
+            <button class="btn-social">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" />
+              <span>Google</span>
+            </button>
+            <button class="btn-social">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" />
+              <span>Microsoft</span>
+            </button>
+            <button class="btn-social">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
+              <span>Apple</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ONBOARDING STEP (Hidden by default) -->
+        <div id="onboarding-step" class="hidden">
+          <div class="form-header">
+            <h1>Customize Journey! 🚀</h1>
+            <p>Personalize your AI companion & path</p>
+          </div>
+
+          <form class="auth-form" id="onboardingForm" onsubmit="event.preventDefault();">
+            <!-- Grade Selection -->
+            <div class="onboarding-section">
+              <label class="onboarding-label">Select Grade / Class</label>
+              <div class="grade-pills">
+                <button type="button" class="grade-pill active" data-grade="1-3">Class 1-3</button>
+                <button type="button" class="grade-pill" data-grade="4-5">Class 4-5</button>
+                <button type="button" class="grade-pill" data-grade="6-8">Class 6-8</button>
+              </div>
+            </div>
+
+            <!-- Study Buddy Selection -->
+            <div class="onboarding-section">
+              <label class="onboarding-label">Select Study Companion</label>
+              <div class="buddy-avatars">
+                <button type="button" class="buddy-avatar avatar-blue active" data-buddy="blue" aria-label="Blue Buddy">
+                  <span class="buddy-color" style="background: #1E88E5;"></span>
+                  <span>Blue</span>
+                </button>
+                <button type="button" class="buddy-avatar avatar-yellow" data-buddy="yellow" aria-label="Yellow Buddy">
+                  <span class="buddy-color" style="background: #FFB300;"></span>
+                  <span>Yellow</span>
+                </button>
+                <button type="button" class="buddy-avatar avatar-purple" data-buddy="purple" aria-label="Purple Buddy">
+                  <span class="buddy-color" style="background: #6C3CE6;"></span>
+                  <span>Purple</span>
+                </button>
+                <button type="button" class="buddy-avatar avatar-red" data-buddy="red" aria-label="Red Buddy">
+                  <span class="buddy-color" style="background: #E53935;"></span>
+                  <span>Red</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Course Path Selection -->
+            <div class="onboarding-section">
+              <label class="onboarding-label">Choose Learning Path</label>
+              <div class="course-cards-row">
+                <div class="course-select-card active" data-course="indian">
+                  <div class="card-emoji">🇮🇳</div>
+                  <div class="card-details">
+                    <h3>Indian Course</h3>
+                    <p>CBSE/ICSE syllabus</p>
+                  </div>
+                </div>
+                <div class="course-select-card" data-course="global">
+                  <div class="card-emoji">🌍</div>
+                  <div class="card-details">
+                    <h3>Global Course</h3>
+                    <p>AI, Coding & Logic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Onboarding Submit Button -->
+            <button type="submit" class="btn-submit btn-onboarding-submit">
+              <span>Start Learning Now!</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="login-script.js"></script>
+</body>
+</html>
